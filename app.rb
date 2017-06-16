@@ -18,7 +18,7 @@ get '/' do
 end
 
 get '/speedtests' do
-  @speedtests = SpeedTest.all.order "time ASC"
+  @speedtests = SpeedTest.where("host = ?",'test.kukilink.it').order "time ASC"
   erb :list
 end
 
@@ -48,5 +48,5 @@ post '/speedtests' do
                             distanceMi: @payload['server']['distanceMi'],
                             ping: @payload['server']['ping'],
                             idh: @payload['server']['id'],
-                            time: DateTime.now)
+                            time: @payload['time']||DateTime.now)
 end
