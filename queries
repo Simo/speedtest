@@ -1,0 +1,6 @@
+SELECT time FROM speed_tests
+where date(time)
+BETWEEN date('2017-05-21') AND date('2017-05-23')
+
+SELECT sum(download)/269 FROM speed_tests
+WHERE time(time) BETWEEN time('07:00:00') AND time('17:00:00')
